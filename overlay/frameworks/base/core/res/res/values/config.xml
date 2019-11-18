@@ -550,6 +550,9 @@
         <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
     </string-array>
 
+	<!-- Whether the device has outdated qti-telephony-common.jar --> 
+	<bool name="config_oldQtiTelephony">false</bool>
+
     <!-- The component name, flattened to a string, for the default autofill service
          to  enabled for an user. This service must be trusted, as it can be activated
          without explicit consent of the user. If no autofill service with the
