@@ -5,9 +5,6 @@ LOCAL_PATH:=$(call my-dir)
 include $(LOCAL_PATH)/../../../common.mk
 include $(CLEAR_VARS)
 
-LOCAL_HEADER_LIBRARIES := libutils_headers
-LOCAL_HEADER_LIBRARIES += media_plugin_headers
-
 LOCAL_CFLAGS:= \
         -DAMSS_VERSION=$(AMSS_VERSION) \
         $(mmcamera_debug_defines) \
@@ -39,6 +36,7 @@ LOCAL_SRC_FILES:= \
 
 LOCAL_C_INCLUDES:=$(LOCAL_PATH)/inc
 LOCAL_C_INCLUDES+= \
+        frameworks/native/include/media/openmax \
         $(LOCAL_PATH)/../common \
         $(LOCAL_PATH)/../mm-camera-interface/inc \
         $(LOCAL_PATH)/../../../mm-image-codec/qexif \
@@ -88,22 +86,18 @@ endif
 LOCAL_CFLAGS += -Wall -Wextra -Werror
 
 LOCAL_SHARED_LIBRARIES:= \
-         libcutils libdl libmmcamera_interface
+         libcutils libdl libmmcamera_interface liblog
 
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_32_BIT_ONLY := $(BOARD_QTI_CAMERA_32BIT_ONLY)
 
 LOCAL_MODULE:= mm-qcamera-app
-LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_EXECUTABLE)
 
 # Build tuning library
 include $(CLEAR_VARS)
-
-LOCAL_HEADER_LIBRARIES := libutils_headers
-LOCAL_HEADER_LIBRARIES += media_plugin_headers
 
 LOCAL_CFLAGS:= \
         -DAMSS_VERSION=$(AMSS_VERSION) \
@@ -136,6 +130,7 @@ LOCAL_SRC_FILES:= \
 
 LOCAL_C_INCLUDES:=$(LOCAL_PATH)/inc
 LOCAL_C_INCLUDES+= \
+        frameworks/native/include/media/openmax \
         $(LOCAL_PATH)/../common \
         $(LOCAL_PATH)/../mm-camera-interface/inc \
         $(LOCAL_PATH)/../../../mm-image-codec/qexif \
@@ -185,14 +180,13 @@ endif
 LOCAL_CFLAGS += -Wall -Wextra -Werror
 
 LOCAL_SHARED_LIBRARIES:= \
-         libcutils libdl libmmcamera_interface
+         libcutils libdl libmmcamera_interface liblog
 
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_32_BIT_ONLY := $(BOARD_QTI_CAMERA_32BIT_ONLY)
 
 LOCAL_MODULE:= libmm-qcamera
-LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
 
